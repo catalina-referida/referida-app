@@ -44,4 +44,18 @@ export default function Onboarding() {
         <div style={{ fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 8 }}>Zona o barrio</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 28 }}>
           {ZONAS.map(z => (
-            <div key={z} onClick={() => setZona(z)} style={{ border: zona === z ? '2px solid #E8622A' : '1.5px solid #EEE', borderRadius: 10, padding: '10px 12px', background: zona === z ? '#FFF0E8' : '#F8F8F8', textAlign: 'center', fontSize: 13, fontWeight: zona === z ? 600 : 400, colo
+            <div key={z} onClick={() => setZona(z)} style={{ border: zona === z ? '2px solid #E8622A' : '1.5px solid #EEE', borderRadius: 10, padding: '10px 12px', background: zona === z ? '#FFF0E8' : '#F8F8F8', textAlign: 'center', fontSize: 13, fontWeight: zona === z ? 600 : 400, color: zona === z ? '#E8622A' : '#555', cursor: 'pointer' }}>
+              {z}
+            </div>
+          ))}
+        </div>
+        <button className="btn" onClick={handleContinuar} disabled={!zona || loading}>
+          {loading ? 'Guardando...' : 'Continuar'}
+        </button>
+        <div style={{ textAlign: 'center', paddingTop: 14 }}>
+          <span style={{ fontSize: 12, color: '#BBB' }}>Podés cambiar esto después</span>
+        </div>
+      </div>
+    </div>
+  )
+}

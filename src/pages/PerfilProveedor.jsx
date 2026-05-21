@@ -63,4 +63,28 @@ export default function PerfilProveedor() {
         {reviews.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '24px 0', color: '#888', fontSize: 14 }}>Todavía no hay reseñas. ¡Sé el primero!</div>
         ) : (
-          revie
+          reviews.map(r => (
+            <div key={r.id} className="card" style={{ marginBottom: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#111' }}>{r.profiles?.name || 'Usuario'}</div>
+                  <div style={{ fontSize: 11, color: '#BBB' }}>{new Date(r.created_at).toLocaleDateString('es-UY')}</div>
+                </div>
+                <span className="stars">{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</span>
+              </div>
+              <div style={{ marginBottom: 8 }}>
+                {r.on_time && <span className="pill-y">✓ Llegó a la hora</span>}
+                {r.respectful === 'respetuoso' && <span className="pill-y">✓ Trato respetuoso</span>}
+                {r.was_alone && <span className="pill-y">✓ Estaba sola</span>}
+                {r.would_return && <span className="pill-y">✓ Volvería a llamar</span>}
+                {!r.would_return && <span className="pill-n">✗ No volvería</span>}
+              </div>
+              {r.comment && <div style={{ fontSize: 12, color: '#666', lineHeight: 1.5 }}>"{r.comment}"</div>}
+            </div>
+          ))
+        )}
+      </div>
+      <TabBar active="buscar" />
+    </div>
+  )
+}

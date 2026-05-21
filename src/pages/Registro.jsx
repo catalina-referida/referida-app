@@ -62,4 +62,13 @@ export default function Registro() {
           <div style={{ width: 18, height: 18, background: '#4285F4', borderRadius: '50%', fontSize: 9, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>G</div>
           Continuar con Google
         </button>
-        <div style
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <span style={{ fontSize: 13, color: '#888' }}>
+            ¿Ya tenés cuenta?{' '}
+            <span onClick={() => navigate('/login')} style={{ color: '#E8622A', fontWeight: 600, cursor: 'pointer' }}>Iniciá sesión</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}

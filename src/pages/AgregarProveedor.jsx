@@ -43,4 +43,30 @@ export default function AgregarProveedor() {
           </div>
           <div style={{ marginBottom: 10 }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 6 }}>¿Qué hace?</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}></div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              {RUBROS.map(r => (
+                <div key={r} onClick={() => setForm({ ...form, rubro: r })} style={{ border: form.rubro === r ? '2px solid #E8622A' : '1.5px solid #EEE', borderRadius: 10, padding: '10px 12px', background: form.rubro === r ? '#FFF0E8' : '#F8F8F8', textAlign: 'center', fontSize: 13, fontWeight: form.rubro === r ? 600 : 400, color: form.rubro === r ? '#E8622A' : '#555', cursor: 'pointer' }}>
+                  {r}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ marginBottom: 10 }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 6 }}>Zona donde trabaja</div>
+            <select className="input" value={form.zona} onChange={e => setForm({ ...form, zona: e.target.value })}>
+              <option value="">Seleccioná una zona</option>
+              {ZONAS.map(z => <option key={z} value={z}>{z}</option>)}
+            </select>
+          </div>
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 6 }}>WhatsApp (opcional)</div>
+            <input className="input" placeholder="+598 99 000 000" value={form.whatsapp} onChange={e => setForm({ ...form, whatsapp: e.target.value })} />
+          </div>
+          <button className="btn" type="submit" disabled={loading}>
+            {loading ? 'Guardando...' : 'Guardar y dejar reseña →'}
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+}
